@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Breakout</title>
+    <script type="text/javascript" src="../Typing-Game/game/Typing.js"></script>
+    <style>
+    * {padding: 0; margin:auto; }
+    canvas {background: #aaa; display: block; margin: 0 auto;}
+    </style>
+</head>
+<body>
+<canvas
+id="canvas"
+
+width="480"
+
+height="320">
+</canvas>
+
+<script>
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext("2d");
+
+var x = canvas.width/2;
+var y = canvas.height-30;
+
+var dx = 2;
+var dy = -2;
+
+var radiusBall = 10;
+
+function ballDraw()
+{
+
+  context.beginPath();
+  context.arc(x, y, radiusBall, 0, Math.PI*2);
+  context.fillStyle = "#0095DD";
+  context.fill();
+  context.closePath();
+
+}
+
+function draw()
+{
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  ballDraw();
+  x += dx;
+  y += dy;
+
+  if(x + dx > canvas.width-radiusBall || x + dx < radiusBall) {
+        dx = -dx;
+    }
+    if(y + dy > canvas.height-radiusBall || y + dy < radiusBall) {
+        dy = -dy;
+    }
+
+}
+
+setInterval(draw, 10);
+
+</script>
+</body>
+</html>
