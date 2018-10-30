@@ -2,143 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Breakout</title>
-    <script type="text/javascript" src="../Typing-Game/game/Typing.js"></script>
+    <title>Memeout</title>
+
     <style>
-    * {padding: 0; margin:auto; }
+    body {
+      background-color: #333
+    }
     canvas {background: #aaa; display: block; margin: 0 auto;}
     </style>
 </head>
 <body>
-<canvas
-id="canvas"
 
-width="480"
+<script  src="../Typing-Game/game/Canvas.js"></script>>
+<script  src="../Typing-Game/game/Draw.js"></script>>
+<script  src="../Typing-Game/game/Paddle.js"></script>>
+<script  src="../Typing-Game/game/Bricks.js"></script>>
+<script  src="../Typing-Game/game/Ball.js"></script>>
 
-height="480">
-</canvas>
-
-<script>
-var canvas = document.getElementById('canvas');
-var context = canvas.getContext("2d");
-
-var x = canvas.width/2;
-var y = canvas.height-30;
-
-var dx = 2;
-var dy = -2;
-
-var radiusBall = 10;
-
-var paddleHeight = 10;
-var paddleWidth = 75;
-var paddleX = (canvas.width-paddleWidth)/2;
-
-var rightPressed = false;
-var leftPressed = false;
-
-var brickRowCount = 3;
-var brickColumnCount = 5;
-var brickWidth = 75;
-var brickHeight = 20;
-var brickPadding = 10;
-var brickOffsetTop = 30;
-var brickOffsetLeft = 30;
-
-var bricks = [];
-for(var c=0; c<brickColumnCount; c++) {
-    bricks[c] = [];
-    for(var r=0; r<brickRowCount; r++) {
-        bricks[c][r] = { x: 0, y: 0 };
-    }
-}
-
-var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
-var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
-
-document.addEventListener("keydown", keyDownHandler, false);
-document.addEventListener("keyup", keyUpHandler, false);
-
-function keyDownHandler(e) {
-    if(e.keyCode == 39) {
-        rightPressed = true;
-    }
-    else if(e.keyCode == 37) {
-        leftPressed = true;
-    }
-}
-function keyUpHandler(e) {
-    if(e.keyCode == 39) {
-        rightPressed = false;
-    }
-    else if(e.keyCode == 37) {
-        leftPressed = false;
-    }
-}
-
-function ballDraw()
-{
-
-  context.beginPath();
-  context.arc(x, y, radiusBall, 0, Math.PI*2);
-  context.fillStyle = "#0095DD";
-  context.fill();
-  context.closePath();
-
-}
-
-function drawPaddle()
-{
-context.beginPath();
-context.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
-context.fillStyle = "##0095DD";
-context.fill();
-context.closePath();
-}
-
-function drawBricks() {
-    for(var c=0; c<brickColumnCount; c++) {
-        for(var r=0; r<brickRowCount; r++) {
-            var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
-            var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
-            bricks[c][r].x = brickX;
-            bricks[c][r].y = brickY;
-            context.beginPath();
-            context.rect(brickX, brickY, brickWidth, brickHeight);
-            context.fillStyle = "#0095DD";
-            context.fill();
-            context.closePath();
-        }
-    }
-}
-
-function draw()
-{
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  ballDraw();
-  drawPaddle();
-  drawBricks();
-  x += dx;
-  y += dy;
-
-  if(x + dx > canvas.width-radiusBall || x + dx < radiusBall) {
-        dx = -dx;
-    }
-    if(y + dy > canvas.height-radiusBall || y + dy < radiusBall) {
-        dy = -dy;
-    }
-
-    if(rightPressed && paddleX < canvas.width-paddleWidth) {
-            paddleX += 7;
-        }
-        else if(leftPressed && paddleX > 0) {
-            paddleX -= 7;
-        }
-
-}
-
-setInterval(draw, 10);
-
-</script>
 </body>
 </html>
