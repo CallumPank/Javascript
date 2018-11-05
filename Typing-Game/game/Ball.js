@@ -3,15 +3,24 @@ var dy = -2;
 
 var radiusBall = 10;
 
+
 function ballDraw()
 {
-
   context.beginPath();
   context.arc(x, y, radiusBall, 0, Math.PI*2);
-  context.fillStyle = "#0095DD";
+  context.fillStyle = "green";
   context.fill();
   context.closePath();
 
+  if(x + dx > canvas.width-radiusBall || x + dx < radiusBall) {
+        dx = -dx;
+
+    }
+
+    if(y + dy > canvas.height-radiusBall || y + dy < radiusBall) {
+        dy = -dy;
+
+    }
 }
 
-setInterval(draw, 10);
+setInterval(draw, 1);

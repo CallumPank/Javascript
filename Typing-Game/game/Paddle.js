@@ -32,7 +32,18 @@ function drawPaddle()
 {
 context.beginPath();
 context.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
-context.fillStyle = "##0095DD";
+context.fillStyle = "#0095DD";
 context.fill();
 context.closePath();
+
+if(rightPressed && paddleX < canvas.width-paddleWidth) {
+        paddleX += 7;
+        context.fillStyle = "green";
+        context.fill();
+    }
+    else if(leftPressed && paddleX > 0) {
+        paddleX -= 7;
+        context.fillStyle = "green";
+        context.fill();
+    }
 }
