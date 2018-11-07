@@ -9,8 +9,9 @@ function collisionDetect()
       if(x > bObject.x && x < bObject.x+brickWidth && y > bObject.y && y < bObject.y+brickHeight) {
                dy = -dy;
                bObject.status = 0;
-             }
+               score++;
+        }
+      }
     }
   }
-}
 }

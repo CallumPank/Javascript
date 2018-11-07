@@ -6,6 +6,7 @@ var brickPadding = 9;
 var brickOffsetTop = 40;
 var brickOffsetLeft = 5;
 
+
 var bricks = [];
 for(var c=0; c<brickColumnCount; c++) {
     bricks[c] = [];
@@ -28,7 +29,7 @@ function drawBricks() {
             bricks[c][r].y = brickY;
             context.beginPath();
             context.rect(brickX, brickY, brickWidth, brickHeight);
-            context.fillStyle = "#0095DD";
+            context.fillStyle = "cyan";
             context.fill();
             context.closePath();
           }

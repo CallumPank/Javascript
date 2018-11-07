@@ -5,6 +5,8 @@ function draw()
   collisionDetect();
   drawPaddle();
   drawBricks();
+  scoring();
+
 
 
   x += dx;

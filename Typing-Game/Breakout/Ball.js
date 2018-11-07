@@ -4,11 +4,12 @@ var dy = -2;
 var radiusBall = 10;
 
 
+
 function ballDraw()
 {
   context.beginPath();
   context.arc(x, y, radiusBall, 0, Math.PI*2);
-  context.fillStyle = "green";
+  context.fillStyle = "#FF0092";
   context.fill();
   context.closePath();
 
