@@ -7,6 +7,8 @@ var brickOffsetTop = 40;
 var brickOffsetLeft = 5;
 
 
+
+//creates array of bricks, containing columns(c) and rows(r) which will each contain the x and y values of the bricks
 var bricks = [];
 for(var c=0; c<brickColumnCount; c++) {
     bricks[c] = [];
@@ -15,6 +17,7 @@ for(var c=0; c<brickColumnCount; c++) {
     }
 }
 
+//without this all bricks painted in one place
 var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
 var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
 

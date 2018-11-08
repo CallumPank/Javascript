@@ -9,7 +9,8 @@ function draw()
 
 
 
-  x += dx;
-  y += dy;
+  x += drawX;
+  y += drawY;
+
 
 }

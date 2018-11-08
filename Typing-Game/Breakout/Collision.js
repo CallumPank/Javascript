@@ -7,9 +7,13 @@ function collisionDetect()
       var bObject = bricks[c][r];
       if(bObject.status == 1) {
       if(x > bObject.x && x < bObject.x+brickWidth && y > bObject.y && y < bObject.y+brickHeight) {
-               dy = -dy;
+               drawY = -drawY;
                bObject.status = 0;
                score++;
+               if(score == brickRowCount*brickColumnCount){
+                 alert("Winner Winner Chicken Dinner");
+                 document.location.reload();
+               }
         }
       }
     }

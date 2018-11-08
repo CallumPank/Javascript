@@ -1,15 +1,17 @@
 var paddleHeight = 10;
-var paddleWidth = 75;
+var paddleWidth = 100;
 var paddleX = (canvas.width-paddleWidth)/2;
 
 var rightPressed = false;
 var leftPressed = false;
 
-var x = canvas.width/2;
-var y = canvas.height-30;
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
+
+document.addEventListener("mousemove", mouseMovement, false);
+
+
 
 function keyDownHandler(e) {
     if(e.keyCode == 39) {
@@ -28,6 +30,15 @@ function keyUpHandler(e) {
     }
 }
 
+//movement of paddle with mouse possible now
+function mouseMovement(e) {
+  var horizontalX = e.clientX - canvas.offsetLeft;
+  if (horizontalX > 0 && horizontalX < canvas.width){
+    paddleX = horizontalX - paddleWidth/2;
+  }
+
+}
+
 function drawPaddle()
 {
 context.beginPath();
@@ -36,6 +47,7 @@ context.fillStyle = "cyan";
 context.fill();
 context.closePath();
 
+//if pressed paddle will move 7 pixels and not go off the side of the screen
 if(rightPressed && paddleX < canvas.width-paddleWidth) {
         paddleX += 7;
     }
